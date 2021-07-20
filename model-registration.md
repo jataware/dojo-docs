@@ -2,26 +2,53 @@
 
 ### Contents
 
-1. [Getting started](#getting-started)
+1. [Getting Started](#getting-started)
 2. [Documenting the Model](#documenting-the-model)
 3. [Directive Annotation](#directive-annotation)
 4. [Configuration File Annotation](#configuration-file-annotation)
-5. Output File Annotation(coming soon)
+5. Output File Annotation (coming soon)
 
-### Getting started
+### Getting Started
 
-You may begin by navigating to [https://phantom.dojo-test.com/](https://phantom.dojo-test.com/). Please reach out to [dojo@jataware.com](mailto:dojo@jataware.com) for credentials or help with the application. From there you will be asked for basic metadata about your dataset.
+You may begin by navigating to [https://phantom.dojo-test.com](https://phantom.dojo-test.com/). Please reach out to [dojo@jataware.com](mailto:dojo@jataware.com) for credentials or help with the application. Once you have accessed Dojo, on the opening screen select `Go!` under `A Model` to begin the registration of your model, as seen below:
 
-> Please provide as much information as possible throughout the model registration process to ensure that sufficient information is available to end-users of your model.
-
-On the opening screen select `Go!` under `A Model` to begin the registration of your model.
+![Dojo](imgs/dojo_opener.png)
 
 ### Documenting the Model
 
+The first two pages will capture metadata about your model and you. It's important to be as thorough as possible to ensure the end-user can understand at a high-level what your model does, how it does it, and what it produces.
 
+####`Model Overview Form`:
 
+The first form after starting the model registration process is the Model Overview page. Here you will complete the following fields:
+
+- `Model Name`: The end-user will see this name when running your model. While spaces and upper/lower case are allowed, _**do not use special characters, to include parenthesis**_.
+- `Model Website`: This can be a link to your model repository or another website that you may maintain that provides additional context about your model.
+- `Model Family`: Model family refers to a group of models with similar characteristics. For example, if you have several models predicting crop production for different crops, you can link those models here under a common family name of your choosing, such as `Crop Production`. If your model does not have a natural grouping with other models, you can name it under an appropriate category related to your model.
+- `Model Description`: This description is the forward-facing documentation about your model that the end-user will see. Include as much information as possible to explain what your model does and what it produces. Include any notes that may be required to explain any model idiosyncrasies. For example, if choosing input Parameter A requires the end-user to select a subset from input Parameter B, be sure to include that here. If your model takes a long time to run, you may want to include an estimated run time.
+
+> Note: Each of the fields above are required.
+
+Below is a brief video demonstration:
 
 ![](./videos/1_model_meta.mov)
+
+#### `Model Specifics Form`:
+
+The second form after starting the model registration process is the Model Specifics page. Here you will enter the following:
+
+- `Maintainer Name`: The primary point of contact for the model.
+- `Maintainer Email`: The primary point of contact's e-mail address. If you have one, a group e-mail is also acceptable.
+- `Maintainer Organization`: The organization that developed the model. 
+- `Is this model stochastic?`: Check yes or no depending on your model.
+- `Category`: Common groupings that you would like your model categorized as. After typing your desired category, press the space bar to add additional categories. Your selected categories will enable end-users to search for 
+
+  > Note: spaces are not allowed when entering your category. To include a multi-word category replace any spaces with an underscore. For example, `crop production` would be entered as `crop_production`. 
+
+
+Note: There may be an option at the bottom of the screen asking `Would you like to reconnect to an existing model?` If you are returning to register a model you previously worked on and would like to continue working in the container with all of your previous work, select your active model container to be re-directed to the model execution environment.
+
+
 ### Directive Annotation
 ### Configuration File Annotation
 1
