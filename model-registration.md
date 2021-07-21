@@ -23,8 +23,8 @@
 ## Overview
 There are two broad sections while registering your model:
 
-1. `Model Description`: You will start the registration process by filling out two forms and choosing any relevant geographic regions so Dojo can build metadata about your model.
-2. `Model Container Build`: Once the forms are completed and geographies selected, you will be directed to the model execution environment. In this environment, you will teach Dojo how to run your model, what parameters you would like to expose to the end-user (either in a command line directive or configuration file), and where your model's output is located after a run. The final step in the model registration process will be to publish your model's image*.
+1. `Model Description`: You will start the registration process by filling out two forms and choosing any relevant geographic regions so Dojo can capture and store metadata about your model.
+2. `Model Container Build`: Once the forms are completed and geographies selected, you will be directed to the model execution environment. In this environment, you will teach Dojo how to run your model, what parameters you would like to expose, your model's output location, and metadata about your output file. The final step in the model registration process will be to publish your model's image*.
 
 *Some models have pre-built images and do not require a new model image to be published. See [Container Set Up](#container-set-up) for more information.
 
@@ -38,9 +38,9 @@ You may begin by navigating to [https://phantom.dojo-test.com](https://phantom.d
 
 The first two pages are forms that capture metadata about your model and you. It's important to be as thorough as possible to ensure the end-user can understand at a high-level what your model does, how it does it, and what it produces.
 
-####`Model Overview Form`:
+#### `Model Overview Form`:
 
-The Model Overview Form captures metadata about your model. There is a short demo video below, as well as definitions for each field:
+The Model Overview Form captures metadata about your model. There is a demonstration video below, as well as definitions for each field:
 
 <div class="iframe-container">
 <iframe width="560" height="315" display="block" margin="0 auto" src="https://www.youtube.com/embed/cLebr5_k9o8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -70,7 +70,7 @@ Model Specifics Form Field Definitions:
 - `Is this model stochastic?`: Check yes or no depending on your model.
 - `Category`: Common groupings that you would like your model categorized as. After typing your desired category, press the space bar to add additional categories. The categories associated with your model enable better discoverability of your model when the end-user searches for a broad model-type.
 
-  > Note: Spaces are not allowed when entering your category. To include a multi-word category, replace any spaces with an underscore. For example, `crop production` would be entered as `crop_production`. 
+  > Note: Spaces are not allowed when entering your category. To include a multi-word category, replace spaces with underscores. For example, `crop production` would be entered as `crop_production`. 
 
 
 There may be an option at the bottom of the screen asking `Would you like to reconnect to an existing model?` If you are returning to Dojo and would like to continue working in your pre-existing container (with all of your previous work), select your active model container to be re-directed to the model execution environment.
@@ -79,7 +79,7 @@ There may be an option at the bottom of the screen asking `Would you like to rec
 
 Model Geographic Coverage allows you to define the geographic areas that your model can be run over. You can add geographic areas by either selecting your area by name or building a bounding box around your area of interest.
 
-Steps to add a geographic area by searching and selecting by administration levels: 
+Steps to add a geographic coverage by administration levels: 
 
 1. Click on `ADD REGIONS BY NAME`
 2. In the search box, enter a place name, country, or any admin-level 1 through 3.
@@ -91,7 +91,7 @@ Steps to add a geographic area by searching and selecting by administration leve
 <iframe width="560" height="315" src="https://www.youtube.com/embed/txh01IYrsFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Steps to add a geographic area by building a bounding box:
+Steps to add a geographic coverage by building a bounding box:
 
 1. Click on `ADD REGIONS BY COORDINATES`
 2. Enter your bounding box coordinates:
@@ -114,7 +114,7 @@ Once you have added your geographic areas, Click `SUBMIT MODEL` to move the next
 
 To launch the model execution environment, you will need to select a base image. 
 
-Your model may have a pre-built image available; to check, click on `Ubuntu`, look through the drop down menu, and select an your bespoke image. If you do not have an image here, choose `Ubuntu`.
+Your model may have a pre-built image available; to check, click on `Ubuntu`, look through the drop down menu, and select your bespoke image. If you do not have an image here, choose `Ubuntu`.
 
 After selecting the appropriate image, select an Available Worker. An Available Worker will both indicate it is `Available` and have no connections or containers. Click `LAUNCH` to move into the model execution environment.
 
@@ -137,10 +137,7 @@ You can leverage the commands below while registering your model:
 
 - `edit <filename.ext>`: launch editor to modify any of your files.
 - `config <configuration filename.ext>`: launch editor to annotate parameters.
-- Directive: For models run via a command line with arguments, launch an annotation tool to annotate parameters and define the model execution code required to run your model.
-- `tag <output filename.ext>`: launch an annotation tool to define.
-- `outputfile`: define the directory path to your model's output file(s).
-
+- `tag <output filename.ext>`: launch an annotation tool to define and classify the columns of your data.
 
 ### Directive Annotation
 On the right-hand side of the terminal there is a dialog box; some entries will be flagged with an option to `MARK AS MODEL DIRECTIVE`. Next to the appropriate model run command, select this flag to launch an annotation window. Annotating the directive allows you to expose and describe parameters to the end-user.  Below is a demonstration video with details about each field following the video.
@@ -150,16 +147,17 @@ On the right-hand side of the terminal there is a dialog box; some entries will 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CHRJgVVpZ00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+
 1. Selecting your parameter. Only highlight the parameters you wish to expose to the end-user. After highlighting _only the parameter value you wish to expose_ (i.e. do not highlight the quotes of strings or the variable name), Dojo will launch an annotation window to describe your parameter.
 2. Available fields:
- - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed
- - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding about what the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
+ - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed.
+ - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding of the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
  - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter.
  - `Pre-Defined Options`: A checkbox option if you would like to constrain the available parameter values to the end-user. Selecting the checkbox will expand the annotation window and allow you to enter any desired parameter values. **These values must align with your model**. I.E., if your model is expecting an underscore between countries with 2+ names, then your entry here must include the underscore. Select `Add option` as needed to include additional parameter values.
  - `Default Value`: While not required, it is recommended to provide a default parameter value.
  - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
  - `Unit Description`: Add detail here to fully explain the parameter's unit. For example, kilograms of crop produced per hectare during the rainy season.
- - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the data-type from the dropdown that classifies your parameter.
+ - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the appropriate data-type from the dropdown for your parameter.
  - `Allow users to change this value`: A checkbox option. If you would like to expose this parameter to the end-user, keep the box checked. If you only want to provide additional information about the parameter to enhance explainability, uncheck the box. The end-user will then not be able to change the value but will be able to view the details of the parameter.
  - `Save`: Select save when complete. You can also select cancel should you no longer want to annotate the parameter and your updates will not be saved.
 
@@ -186,7 +184,7 @@ If your model has a configuration file, you will need to annotate the config in 
  - `Default Value`: While not required, it is recommended to provide a default parameter value.
  - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
  - `Unit Description`: Add detail here to fully explain the parameter's unit. For example, kilograms of crop produced per hectare during the rainy season.
- - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the data-type from the dropdown that classifies your parameter.
+ - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the appropriate data-type from the dropdown for your parameter.
  - `Allow users to change this value`: A checkbox option. If you would like to expose this parameter to the end-user, keep the box checked. If you only want to provide additional information about the parameter to enhance explainability, uncheck the box. The end-user will then not be able to change the value but will be able to view the details of the parameter.
  - `Save`: Select save when complete. You can also select cancel should you no longer want to annotate the parameter and your updates will not be saved.
 
@@ -216,7 +214,7 @@ If you have done all the above, you are ready to publish your image. Select `END
 
 
 **IMPORTANT**
-When you are done select, `ABANDON SESSION`. As you noticed when launching into the model execution environment, there are a limited number of workers available. If you do not abandon your session, the container will continue to run and your worker will be available to others wishing to register a model.
+When you are done select, `ABANDON SESSION`. As you noticed when launching into the model execution environment, there are a limited number of workers available. If you do not abandon your session, the container will continue to run and your worker will not be available to others wishing to register a model.
 
 <div class="iframe-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fsQGoCM1ihM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
