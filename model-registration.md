@@ -172,6 +172,7 @@ If your model has a configuration file, you will need to annotate the config in 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wAcZ3k3v3us" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+
 1. To launch the config annotation window run:
   ```
   config <config_file.ext>
