@@ -1,190 +1,222 @@
+<style>
+  .iframe-container {
+		text-align:center;
+  		width:100%;
+  }
+</style>
+
 ## Model Registration
 
 ### Contents
 
 1. [Getting Started](#getting-started)
 2. [Documenting the Model](#documenting-the-model)
-3. [Directive Annotation](#directive-annotation)
-4. [Configuration File Annotation](#configuration-file-annotation)
-5. Output File Annotation (coming soon)
+3. [Model Geographic Coverage](#model-geographic-coverage)
+4. [Container Set Up](#container-set-up) 
+5. [Build your model](#build-your-model)
+5. [Directive Annotation](#directive-annotation)
+6. [Configuration File Annotation](#configuration-file-annotation)
+7. [Output File Annotation](#output-file-annotation)
+8. [Completing the Registration](#completing-the-registration)
 
-### Getting Started
 
-You may begin by navigating to [https://phantom.dojo-test.com](https://phantom.dojo-test.com/). Please reach out to [dojo@jataware.com](mailto:dojo@jataware.com) for credentials or help with the application. Once you have accessed Dojo, on the opening screen select `Go!` under `A Model` to begin the registration of your model, as seen below:
+## Overview
+There are two broad sections while registering your model:
+
+1. `Model Description`: You will start the registration process by filling out two forms and choosing any relevant geographic regions so Dojo can build metadata about your model.
+2. `Model Container Build`: Once the forms are completed and geographies selected, you will be directed to the model execution environment. In this environment, you will teach Dojo how to run your model, what parameters you would like to expose to the end-user (either in a command line directive or configuration file), and where your model's output is located after a run. The final step in the model registration process will be to publish your model's image*.
+
+*Some models have pre-built images and do not require a new model image to be published. See [Container Set Up](#container-set-up) for more information.
+
+You may begin by navigating to [https://phantom.dojo-test.com](https://phantom.dojo-test.com/). Please reach out to [dojo@jataware.com](mailto:dojo@jataware.com) for credentials or help with the application. Once you have accessed Dojo, on the opening` Welcome to Dojo` screen select `Go!` under `A Model` to begin registering your model:
 
 ![Dojo](imgs/dojo_opener.png)
 
+## Model Registration
+
 ### Documenting the Model
 
-The first two pages will capture metadata about your model and you. It's important to be as thorough as possible to ensure the end-user can understand at a high-level what your model does, how it does it, and what it produces.
+The first two pages are forms that capture metadata about your model and you. It's important to be as thorough as possible to ensure the end-user can understand at a high-level what your model does, how it does it, and what it produces.
 
 ####`Model Overview Form`:
 
-The first form after starting the model registration process is the Model Overview page. Here you will complete the following fields:
+The Model Overview Form captures metadata about your model. There is a short demo video below, as well as definitions for each field:
+
+<div class="iframe-container">
+<iframe width="560" height="315" display="block" margin="0 auto" src="https://www.youtube.com/embed/cLebr5_k9o8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+Model Overview Form Field Definitions:
 
 - `Model Name`: The end-user will see this name when running your model. While spaces and upper/lower case are allowed, _**do not use special characters, to include parenthesis**_.
 - `Model Website`: This can be a link to your model repository or another website that you may maintain that provides additional context about your model.
-- `Model Family`: Model family refers to a group of models with similar characteristics. For example, if you have several models predicting crop production for different crops, you can link those models here under a common family name of your choosing, such as `Crop Production`. If your model does not have a natural grouping with other models, you can name it under an appropriate category related to your model.
-- `Model Description`: This description is the forward-facing documentation about your model that the end-user will see. Include as much information as possible to explain what your model does and what it produces. Include any notes that may be required to explain any model idiosyncrasies. For example, if choosing input Parameter A requires the end-user to select a subset from input Parameter B, be sure to include that here. If your model takes a long time to run, you may want to include an estimated run time.
-
-> Note: Each of the fields above are required.
-
-Below is a brief video demonstration:
-
-![](./videos/1_model_meta.mov)
+- `Model Family`: Model family refers to a group of models with similar characteristics. If you have several models predicting crop production for different crops, you can link those models here under a common family name of your choosing, such as `Crop Production`. If your model does not have a natural grouping with other models, you can name it under an appropriate category related to your model.
+- `Model Description`: Your description here is the forward-facing documentation about your model that the end-user will see. Include as much information as possible to explain what your model does and what it produces. Include any notes that may be required to explain any model idiosyncrasies. For example, if choosing input Parameter A requires the end-user to select a subset from input Parameter B, be sure to include that here. If your model takes a long time to run, you may want to include an estimated run time.
 
 #### `Model Specifics Form`:
 
-The second form after starting the model registration process is the Model Specifics page. Here you will enter the following:
+The Model Specifics Form captures general metadata about you and your model. There is a short demo video below, as well as definitions for each field:
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XIS6tmOqB_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Model Specifics Form Field Definitions:
 
 - `Maintainer Name`: The primary point of contact for the model.
 - `Maintainer Email`: The primary point of contact's e-mail address. If you have one, a group e-mail is also acceptable.
 - `Maintainer Organization`: The organization that developed the model. 
 - `Is this model stochastic?`: Check yes or no depending on your model.
-- `Category`: Common groupings that you would like your model categorized as. After typing your desired category, press the space bar to add additional categories. Your selected categories will enable end-users to search for 
+- `Category`: Common groupings that you would like your model categorized as. After typing your desired category, press the space bar to add additional categories. The categories associated with your model enable better discoverability of your model when the end-user searches for a broad model-type.
 
-  > Note: spaces are not allowed when entering your category. To include a multi-word category replace any spaces with an underscore. For example, `crop production` would be entered as `crop_production`. 
+  > Note: Spaces are not allowed when entering your category. To include a multi-word category, replace any spaces with an underscore. For example, `crop production` would be entered as `crop_production`. 
 
 
-Note: There may be an option at the bottom of the screen asking `Would you like to reconnect to an existing model?` If you are returning to register a model you previously worked on and would like to continue working in the container with all of your previous work, select your active model container to be re-directed to the model execution environment.
+There may be an option at the bottom of the screen asking `Would you like to reconnect to an existing model?` If you are returning to Dojo and would like to continue working in your pre-existing container (with all of your previous work), select your active model container to be re-directed to the model execution environment.
+
+### Model Geographic Coverage
+
+Model Geographic Coverage allows you to define the geographic areas that your model can be run over. You can add geographic areas by either selecting your area by name or building a bounding box around your area of interest.
+
+Steps to add a geographic area by searching and selecting by administration levels: 
+
+1. Click on `ADD REGIONS BY NAME`
+2. In the search box, enter a place name, country, or any admin-level 1 through 3.
+3. Select your desired region from the dropdown menu.
+4. Your selection will appear in the search box: **click on `ADD REGION`** to add it to the `Selected Regions`.
+5. Repeat the process to add any other geographic areas.
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/txh01IYrsFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Steps to add a geographic area by building a bounding box:
+
+1. Click on `ADD REGIONS BY COORDINATES`
+2. Enter your bounding box coordinates:
+
+ - Corner 1: The latitude and longitude of the northwest corner of your bounding box.
+ - Corner 2: The latitude and longitude of the southeast corner of your bounding box.
+  
+    >Note : Westerly longitudes and Southern latitudes are negative
+  
+3. Select `ADD REGION TO MAP`
+
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pbhAhhW6Qgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Once you have added your geographic areas, Click `SUBMIT MODEL` to move the next step in the registration process.
+
+### Container Set Up
+
+To launch the model execution environment, you will need to select a base image. 
+
+Your model may have a pre-built image available; to check, click on `Ubuntu`, look through the drop down menu, and select an your bespoke image. If you do not have an image here, choose `Ubuntu`.
+
+After selecting the appropriate image, select an Available Worker. An Available Worker will both indicate it is `Available` and have no connections or containers. Click `LAUNCH` to move into the model execution environment.
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CHRJgVVpZ00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+### Build your model
+
+You will build your image in the model execution environment (a Docker container). While all models are different, the general approach is to:
+
+- Clone your model code into the container.
+- Install any requirements needed to run your model.
+- Test model execution. This can be an iterative approach in that you can make several test runs to ensure that you model is running and producing the expected results.
+- Once you have a successful model run, Dojo will need to learn how you run your model, what input parameters you want to expose to the end-user, metadata about your output file(s), and the directory where your results are located. [Quick Reference](#quick-command-reference) is a short introduction to the commands you will need followed by more in depth discussions and demonstration videos of each command.
+
+
+#### Quick Command Reference:
+You can leverage the commands below while registering your model:
+
+- `edit <filename.ext>`: launch editor to modify any of your files.
+- `config <configuration filename.ext>`: launch editor to annotate parameters.
+- Directive: For models run via a command line with arguments, launch an annotation tool to annotate parameters and define the model execution code required to run your model.
+- `tag <output filename.ext>`: launch an annotation tool to define.
+- `outputfile`: define the directory path to your model's output file(s).
 
 
 ### Directive Annotation
+On the right-hand side of the terminal there is a dialog box; some entries will be flagged with an option to `MARK AS MODEL DIRECTIVE`. Next to the appropriate model run command, select this flag to launch an annotation window. Annotating the directive allows you to expose and describe parameters to the end-user.  Below is a demonstration video with details about each field following the video.
+
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CHRJgVVpZ00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+1. Selecting your parameter. Only highlight the parameters you wish to expose to the end-user. After highlighting _only the parameter value you wish to expose_ (i.e. do not highlight the quotes of strings or the variable name), Dojo will launch an annotation window to describe your parameter.
+2. Available fields:
+ - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed
+ - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding about what the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
+ - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter.
+ - `Pre-Defined Options`: A checkbox option if you would like to constrain the available parameter values to the end-user. Selecting the checkbox will expand the annotation window and allow you to enter any desired parameter values. **These values must align with your model**. I.E., if your model is expecting an underscore between countries with 2+ names, then your entry here must include the underscore. Select `Add option` as needed to include additional parameter values.
+ - `Default Value`: While not required, it is recommended to provide a default parameter value.
+ - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
+ - `Unit Description`: Add detail here to fully explain the parameter's unit. For example, kilograms of crop produced per hectare during the rainy season.
+ - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the data-type from the dropdown that classifies your parameter.
+ - `Allow users to change this value`: A checkbox option. If you would like to expose this parameter to the end-user, keep the box checked. If you only want to provide additional information about the parameter to enhance explainability, uncheck the box. The end-user will then not be able to change the value but will be able to view the details of the parameter.
+ - `Save`: Select save when complete. You can also select cancel should you no longer want to annotate the parameter and your updates will not be saved.
+
+Repeat the above process for every applicable parameter value in your model execution. Once complete, select save in the upper right-hand corner; this will save your annotated directive in Dojo.
+
 ### Configuration File Annotation
-1
+If your model has a configuration file, you will need to annotate the config in order to expose parameters to the end-user. Once the annotation window is launched, you can annotate each parameter and provide metadata and detailed information. Below is a demonstration video with details about each field following the video.
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wAcZ3k3v3us" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+1. To launch the config annotation window run:
+  ```
+  config <config_file.ext>
+  ```
+2. Selecting your parameter. Highlight the parameter you wish to expose to the end-user.
+3. Available fields:
+ - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed
+ - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding about what the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
+ - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter. Notice if  `Float` or `Integer` is selected as the `Type` you are required to provide the minimum and maximum values allowed for your model.
+ - `Pre-Defined Options`: A checkbox option if you would like to constrain the available parameter values to the end-user. Selecting the checkbox will expand the annotation window and allow you to enter any desired parameter values. **These values must align with your model**. I.E., if your model is expecting an underscore between countries with 2+ names, then your entry here must include the underscore. Select `Add option` as needed to include additional parameter values.
+ - `Default Value`: While not required, it is recommended to provide a default parameter value.
+ - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
+ - `Unit Description`: Add detail here to fully explain the parameter's unit. For example, kilograms of crop produced per hectare during the rainy season.
+ - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the data-type from the dropdown that classifies your parameter.
+ - `Allow users to change this value`: A checkbox option. If you would like to expose this parameter to the end-user, keep the box checked. If you only want to provide additional information about the parameter to enhance explainability, uncheck the box. The end-user will then not be able to change the value but will be able to view the details of the parameter.
+ - `Save`: Select save when complete. You can also select cancel should you no longer want to annotate the parameter and your updates will not be saved.
+
+Repeat the above process for every applicable parameter value in your configuration file. Once complete, select save in the upper right-hand corner; this will save your annotated configuration file in Dojo.
 
 
-
-When you initially upload a file you may be presented with a set of options depending upon the detected file type.
-
-> To make this process as efficient as possible, we recommend removing any extraneous columns (if your data is in CSV or Excel file) before uploading it to Dojo.
-
-Excel files require that you select a worksheet. If your file is large, please wait until you see the detected worksheet names and select the appropriate one. If your data is columnar (CSV or Excel) it must have one column per item of interest. For example, a table that looks like this would be acceptable:
-
-| Year | Country  | Crop Index |
-|------|----------|------------|
-| 2015 | Djibouti | 0.7        |
-| 2016 | Djibouti | 0.8        |
-| 2017 | Djibouti | 0.9        |
-
-However, a transposed dataset such as the following would be unacceptable:
-
-| Country  | 2015 | 2016 | 2017 |
-|----------|------|------|------|
-| Djibouti | 0.7  | 0.8  | 0.9  |
-| Eritrea  | 0.6  | 0.7  | 0.9  |
-
-A dataset such as the above should be transformed by the user _beforehand_ so that each item of interest has its own column.
-
-If your dataset is a GeoTIFF, you will be asked to provide the data band you wish to process and the name of the feature that resides in that band. You may optionally provide a date for the respective band.
-
-### Geo and time inference
-
-Once you have uploaded your dataset, Dojo analyzes it to determine whether your dataset contains place or time information such as `timestamps`, `latitude`, `longitude`, `ISO` country codes, etc. This analysis process may take a few seconds, but it will ultimately speed up your data annotation.
-
-### Annotating your dataset
-
-Next, you will be shown a sample of 100 rows of your dataset. Columns highlighted in <span style="color:blue">**blue**</span> represent those which had a detected time or location feature.
-
-Click the **Annotate** button at the top of each column to annotate it.
-
-> Note: you should only annotate columns that you wish to retain in the final, transformed dataset.
-
-Once you've annotated a column it will be highlighted in <span style="color:green">**green**</span>.
-
-![Pre-Annotation](imgs/pre-annotate.png)
-
-You will be asked for a `display name` and `description` for your dataset. Additionally you will be asked whether this column is either `Date`, `Geo`, or a `Feature`.
-
-In the case of `Date` and `Geo` columns, they may be set to `primary`. It is important to choose only one column to be the primary `Date` and one to be the primary `Geo`. In the case of a [build a date](#build-a-date) or [coordinate pairs](#coordinate-pairs) all relevant columns will be associated as `primary` if the user sets that "grouping" to be primary.
-
-#### Date formatting
-
-In the below example, the user annotates the "Year" column.
-
-![Pre-Annotation](imgs/year.png)
-
-Note how the sample table at the left of the page is highlighted <span style="color:green">**green**</span>? That is because we have automatically detected a valid date format of `%Y` for this column. Date formats are defined using the [strftime](https://strftime.org/) reference. Please refer to it for questions about how to correct or update the date format for a column. Generally, our column analysis process can correctly assign a date format, but periodically the user must update or correct this with an appropriate formatter. For example `2020-02-01` would have the date format `%Y-%m-%d` but `Februrary 1, 2020` would be `%B %-d, %Y`.
-
-If the date formatter is incorrect the column preview will turn <span style="color:red">**red**</span> until the user has corrected it.
-
-#### Build a date
-
-Some datasets have year, month and day split out into separate columns. In this case, the user may "build a date" by annotating any of the relevant fields and indicating that it is `part of a multi-column datetime object`.
-
-![Build a date](imgs/build-a-date.png)
-
-The user can then select the relevant year, month and day columns as well as ensure they have correct date formatters.
-
-#### Coordinate pairs
-
-Generally speaking, if a dataset has latitude and longitude in it we should annotate this and ignore the other geospatial information (unless they are [qualifiers](#qualifiers)) as this is the most granular location information available and can be used to geocode the remainder of the dataset.
-
-However, latitude and longitude are not typically contained in the same column. So, we provide a mechanism for the user to associate a `latitude` with a `longitude` and vice versa. To do this, you indicate that the column `is part of a coordinate pair` and choose it's partner from the dropdown.
-
-![Coordinate pair](imgs/coordinate-pair.png)
-
-#### Multi-part geographies
-
-If a dataset has geographies that correspond to `country`, `admin1`, `admin2`, and `admin3`, these should be added **without** flagging as `primary_geo`.
-
->If any of these are flagged as `primary_geo`, then the remaining geographies will be added as `features`.
-
-For example, if the dataset includes:
-
-| ADMIN0   | ADMIN1 | ADMIN2 |
-|----------|--------|--------|
-| Djibouti | Dikhi  | Yoboki |
-| Djibouti | Obock  | Obock  |
-
-and the following assignments are made:
-
-- ADMIN0 *Type*: `Geo` *Format*: `Country` *`This is my primary geo field`*
-- ADMIN1 *Type*: `Geo` *Format*: `State/Territory`
-- ADMIN2 *Type*: `Geo` *Format*: `Country/District`
-
-the *Preview* will display results similar to:
-
-| country  | admin1 |  admin2 | feature | value  |
-|----------|--------|---------|---------|--------|
-| Djibouti | NAN    | NAN     | ADMIN2  | Yoboki |
-| Djibouti | NAN    | NAN     | ADMIN1  | Obock  |
-
-if instead the following assignments are made where no field is marked `primary_geo`:
-
-- ADMIN0 *Type*: `Geo` *Format*: `Country`
-- ADMIN1 *Type*: `Geo` *Format*: `State/Territory`
-- ADMIN2 *Type*: `Geo` *Format*: `Country/District`
-
-the *Preview* will display results similar to:
-
-| country  | admin1 |  admin2 |
-|----------|--------|---------|
-| Djibouti | Dikhi  | Yoboki  |
-| Djibouti | Obock  | Obock   |
+### Output File Annotation
+Once your model has run you will need to annotate your output file(s). This step provides the required metadata to geocode, associate and format columns, and convert your output to a Causemos-compliant dataset. For a detailed description on how to do this, please go to [CauseMos Compliant Format](./causemos-format.md).
 
 
-#### Qualifiers
+### Completing the Registration
+When you have completed the above steps, you are ready to publish your model image to DockerHub. This image will be utilized downstream from the model registration process and allow end-users to change exposed parameters, run the updated model, and then inspect and conduct analyses with the results in the Causemos interface.
 
-Many datasets contain features that _qualify_ other features. For example, in a conflict/event dataset such as ACLED, you may have a category for the type of event. The primary feature associated with the event may be number of fatalities, while the category "qualifies" the number of fatalities.
+As a recap, before publishing your image, you should have:
 
-![Qualifiers](imgs/qualifiers.png)
+1. Uploaded your model.
+2. Installed any dependencies.
+3. Iteratively tested your model and verified model behavior / results.
+4. For directive-type models: annotated all desired parameters on the command line; this includes both parameters you want to expose and parameters you wish to remain static but wish to provide additional explainability.
+5. For configuration-type models: annotated all desired parameters in the configuration file.
+6. Annotated the model output file(s) to define the metadata, geocode, and transform your output to a Causemos-compliant dataset.
+7. Defined the location / directory of your output file(s). This is required in order to mount your model output and complete the geocoding and causemosification transform of the results.
 
-To set `Event Type` as a _qualifier_ for `fatalities` the user should check the box indicating that `this field qualifies another`. The user should then select the relevant columns that the current feature qualifies. One field may qualify many features; in this case select all relevant features that the field of interest qualifies.
+If you have done all the above, you are ready to publish your image. Select `END SESSION`; you will be asked if you want to publish the image. Select `yes` and monitor the publication progress. When complete, you can go to https://hub.docker.com/repository/docker/jataware/dojo-publish and look under the tags section to verify that your image was pushed to DockerHub. You may need to expand the tags section.
 
-> Note: you should only _qualify_ other features, not `Geo` or `Date` information since those are inherently dataset qualifiers. This avoids "qualifying a qualifier."
+> Note: As discussed before, some models have custom images pre-built. If your model has a pre-built image, _**you do not need to publish the image**_
 
-### Transforming the dataset
 
-When you have completed annotating your dataset you should have at least one feature annotated as well as a primary geography and date. If no primary `Date` or `Geo` information was provided, we do our best to identify what _might_ have been `primary` based on the user's annotations.
+**IMPORTANT**
+When you are done select, `ABANDON SESSION`. As you noticed when launching into the model execution environment, there are a limited number of workers available. If you do not abandon your session, the container will continue to run and your worker will be available to others wishing to register a model.
 
-We then transform the dataset into a ready-to-use format. This process may take some time, depending on what is required. If the dataset is quite large and requires reverse geocoding latitude and longitudes into admin 0 through 3 (using GADM) it could take up to a few minutes.
-
-After the dataset has been transformed a preview will be shown in the ready-to-use format. If the dataset is large, a random sample of 100 rows is taken to allow the user to spot check accuracy. All `features` are "stacked" on top of each other. Qualifiers are added as additional columns to the right.
-
-![Preview](imgs/preview.png)
-
-During this step, we attempt to automatically normalize all place names to the [GADM standard](https://gadm.org/). If your dataset contained columns for things like country, admin 1, ISO codes, etc we perform entity resolution behind-the-scenes to ensure that the place name spelling matches GADM. This ensures consistent place naming for downstream data consumers.
-
-If everything looks good the user can download this table if they wish. To save their work, the user **must `Submit to Dojo`**. Upon success the user can register another dataset or view the final metadata in Dojo.
-Model
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fsQGoCM1ihM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
