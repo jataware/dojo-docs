@@ -14,8 +14,8 @@
 3. [Model Geographic Coverage](#model-geographic-coverage)
 4. [Container Set Up](#container-set-up) 
 5. [Build your model](#build-your-model)
-5. [Directive Annotation](#directive-annotation)
-6. [Configuration File Annotation](#configuration-file-annotation)
+5. [Configuration File Annotation](#configuration-file-annotation)
+6. [Directive Annotation](#directive-annotation)
 7. [Output File Annotation](#output-file-annotation)
 8. [Completing the Registration](#completing-the-registration)
 
@@ -51,8 +51,8 @@ Model Overview Form Field Definitions:
 
 - `Model Name`: The end-user will see this name when running your model. While spaces and upper/lower case are allowed, _**do not use special characters, to include parenthesis**_.
 - `Model Website`: This can be a link to your model repository or another website that you may maintain that provides additional context about your model.
-- `Model Family`: Model family refers to a group of models with similar characteristics. If you have several models predicting crop production for different crops, you can link those models here under a common family name of your choosing, such as `Crop Production`. If your model does not have a natural grouping with other models, you can name it under an appropriate category related to your model.
-- `Model Description`: Your description here is the forward-facing documentation about your model that the end-user will see. Include as much information as possible to explain what your model does and what it produces. Include any notes that may be required to explain any model idiosyncrasies. For example, if choosing input Parameter A requires the end-user to select a subset from input Parameter B, be sure to include that here. If your model takes a long time to run, you may want to include an estimated run time.
+- `Model Family`: Model family refers to a group of models with similar characteristics. If you have several procedures based on the same underlying model family, you can link those models or model procedures here under a common family name of your choosing, such as `LPJmL`. If your model does not have a natural grouping with other models, you can name it under an appropriate category related to your model or repeat your model name.
+- `Model Description`: Your description here is the forward-facing documentation about your model that the end-user will see. Include as much information as possible to explain what your model does and what it produces. Include any notes that may be required to explain any model idiosyncrasies. If your model takes a long time to run, you may want to include an estimated run time.
 
 #### `Model Specifics Form`:
 
@@ -136,50 +136,31 @@ You will build your image in the model execution environment (a Docker container
 You can leverage the commands below while registering your model:
 
 - `edit <filename.ext>`: launch editor to modify any of your files.
-- `config <configuration filename.ext>`: launch editor to annotate parameters.
-- `tag <output filename.ext>`: launch an annotation tool to define and classify the columns of your data.
-
-### Directive Annotation
-On the right-hand side of the terminal there is a dialog box; some entries will be flagged with an option to `MARK AS MODEL DIRECTIVE`. Next to the appropriate model run command, select this flag to launch an annotation window. Annotating the directive allows you to expose and describe parameters to the end-user.  Below is a demonstration video with details about each field following the video.
-
-
-<div class="iframe-container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CHRJgVVpZ00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-
-1. Selecting your parameter. Only highlight the parameters you wish to expose to the end-user. After highlighting _only the parameter value you wish to expose_ (i.e. do not highlight the quotes of strings or the variable name), Dojo will launch an annotation window to describe your parameter.
-2. Available fields:
- - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed.
- - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding of the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
- - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter.
- - `Pre-Defined Options`: A checkbox option if you would like to constrain the available parameter values to the end-user. Selecting the checkbox will expand the annotation window and allow you to enter any desired parameter values. **These values must align with your model**. I.E., if your model is expecting an underscore between countries with 2+ names, then your entry here must include the underscore. Select `Add option` as needed to include additional parameter values.
- - `Default Value`: While not required, it is recommended to provide a default parameter value.
- - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
- - `Unit Description`: Add detail here to fully explain the parameter's unit. For example, kilograms of crop produced per hectare during the rainy season.
- - `Data Type`: Available options include nominal, ordinal, numerical, and freeform. Choose the appropriate data-type from the dropdown for your parameter.
- - `Allow users to change this value`: A checkbox option. If you would like to expose this parameter to the end-user, keep the box checked. If you only want to provide additional information about the parameter to enhance explainability, uncheck the box. The end-user will then not be able to change the value but will be able to view the details of the parameter.
- - `Save`: Select save when complete. You can also select cancel should you no longer want to annotate the parameter and your updates will not be saved.
-
-Repeat the above process for every applicable parameter value in your model execution. Once complete, select save in the upper right-hand corner; this will save your annotated directive in Dojo.
+- `config <path_to_config_file.json>`: launch editor to annotate parameters.
+- `tag <path_to_outputfile.csv>`: launch an annotation tool to define and classify the columns of your data.
 
 ### Configuration File Annotation
-If your model has a configuration file, you will need to annotate the config in order to expose parameters to the end-user. Once the annotation window is launched, you can annotate each parameter and provide metadata and detailed information. Below is a demonstration video with details about each field following the video.
+If your model has configuration files with parameters or tunable knobs you wish to expose to users, you will need to annotate them in order to expose parameters to the end-user. Once the annotation window is launched, you can annotate each parameter and provide metadata and detailed information. 
+
+With Dojo, you can annotate any plain text/ascii configuration file, including `.txt`, `.yaml`, `.json`, `.xml`, etc. 
+
+Below is a demonstration video with details about each field following the video.
 
 <div class="iframe-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wAcZ3k3v3us" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+To launch the config annotation window run (replace `<path_to_config_file.json>` with the appropriate file path and name):
 
-1. To launch the config annotation window run:
   ```
-  config <config_file.ext>
+  config <path_to_config_file.json>
   ```
-2. Selecting your parameter. Highlight the parameter you wish to expose to the end-user.
-3. Available fields:
- - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed
- - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding about what the parameter. For non-standard formats, be sure to include not only an explanation, but also an example.
- - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter. Notice if  `Float` or `Integer` is selected as the `Type` you are required to provide the minimum and maximum values allowed for your model.
+
+1. Selecting your parameter. Only highlight the parameters you wish to expose to the end-user. After highlighting _only the parameter value you wish to expose_ (i.e. do not highlight the quotes of strings or the variable name), Dojo will launch an annotation window to describe your parameter.
+2. Available fields:
+ - `Name`: The natural language name that want to call your parameter; string only and spaces are allowed.
+ - `Description`: As with your model description, the parameter description should be detailed. The end-user will rely on this description to gain an understanding of the parameter. For non-standard formats, be sure to include not only an explanation, but also an example. For example, if choosing input Parameter A requires the end-user to select a subset from input Parameter B, be sure to include that here. 
+ - `Type`: Available options include string, integer, float, Date/time, and boolean. Choose the type from the dropdown that classifies your parameter.
  - `Pre-Defined Options`: A checkbox option if you would like to constrain the available parameter values to the end-user. Selecting the checkbox will expand the annotation window and allow you to enter any desired parameter values. **These values must align with your model**. I.E., if your model is expecting an underscore between countries with 2+ names, then your entry here must include the underscore. Select `Add option` as needed to include additional parameter values.
  - `Default Value`: While not required, it is recommended to provide a default parameter value.
  - `Unit`: Required if applicable to your parameter. There is a field below to describe the unit, so here simply enter the units such as KG/HA or kilograms per hectare.
@@ -190,9 +171,34 @@ If your model has a configuration file, you will need to annotate the config in 
 
 Repeat the above process for every applicable parameter value in your configuration file. Once complete, select save in the upper right-hand corner; this will save your annotated configuration file in Dojo.
 
+> Note: upon model execution, Dojo accepts parameter selections from end users and "rehydrates" the relevant config files with those parameter selections.
+
+### Directive Annotation
+On the right-hand side of the terminal there is a dialog box; some entries will be flagged with an option to `MARK AS MODEL DIRECTIVE`. Next to the appropriate model run command, select this flag to launch an annotation window. Annotating the directive allows you to expose and describe parameters to the end-user.  Below is a demonstration video with details about each field following the video.
+
+<div class="iframe-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CHRJgVVpZ00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+The same process applies to directive annotations as applied to [configuration annotation](#configuration-file-annotation).
+
+Repeat the annotation process for every applicable parameter value in your model execution. Once complete, select save in the upper right-hand corner; this will save your annotated directive in Dojo.
+
+> Note: your model can have only one directive. If running your model is a multi-step process, you must combine those steps into a single executable script or command.
+
 
 ### Output File Annotation
-Once your model has run you will need to annotate your output file(s). This step provides the required metadata to geocode, associate and format columns, and convert your output to a Causemos-compliant dataset. For a detailed description on how to do this, please go to [CauseMos Compliant Format](./causemos-format.md).
+Once your model has run you will need to annotate your output file(s). This step provides the required metadata to geocode, associate and format columns, and convert your output to a Causemos-compliant dataset. 
+
+> Currently, Dojo supports `.csv`, `.nc` (NetCDF), and `.tiff` (GeoTIFF). The files must have these correct extensions. For example, a `.txt` file that is `,` delimited, though technically a "CSV", will not be handled correctly by Dojo.
+
+To launch the output file annotation tool, run (replace `<path_to_output_file.csv>` with the appropriate file path and name):
+```
+
+tag <path_to_output_file.csv>
+```
+
+For a detailed description on how to do this, please go to [CauseMos Compliant Format](./causemos-format.md).
 
 
 ### Completing the Registration
@@ -214,7 +220,7 @@ If you have done all the above, you are ready to publish your image. Select `END
 
 
 **IMPORTANT**
-When you are done select, `ABANDON SESSION`. As you noticed when launching into the model execution environment, there are a limited number of workers available. If you do not abandon your session, the container will continue to run and your worker will not be available to others wishing to register a model.
+If for some reason you do not wish to publish a container image, you must select `ABANDON SESSION`. As you noticed when launching into the model execution environment, there are a limited number of workers available. If you do not abandon your session, the container will continue to run and your worker will not be available to others wishing to register a model.
 
 <div class="iframe-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fsQGoCM1ihM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
