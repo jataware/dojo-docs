@@ -136,7 +136,7 @@ You will build your image in the model execution environment (a Docker container
 You can leverage the commands below while registering your model:
 
 - `edit <filename.ext>`: launch editor to modify any of your files.
-- `config <path_to_config_file.json>`: launch editor to annotate parameters.
+- `config <path_to_config_file.json>`: launch a tool to define and annotate parameters.
 - `tag <path_to_outputfile.csv>`: launch an annotation tool to define and classify the columns of your data.
 
 ### Configuration File Annotation
