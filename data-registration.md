@@ -49,12 +49,12 @@ Model Overview Form Field Definitions:
 
 - `Name`: Name of the Dataset
 - `Description`: Your description here is the forward-facing documentation about your data that the end-user will see. Include as much information as possible to explain your data. 
-- `Category`: Add any over-arching categories that your data can be classified as; seperate each category with a comma.
-- `Resloution`: 
+- `Category`: Add any over-arching categories that your data can be classified as; separate each category with a comma.
+- `Resolution`: 
   - Choose the applicable temporal resolution from the drop-down
   - Enter the X and Y resolution of your spatial data
 - `Maintainer Information`:
-  - `Name`: The primary point of contact for thee dataset.
+  - `Name`: The primary point of contact for the dataset.
   - `Email`: The primary point of contact's e-mail address. If you have one, a group e-mail is also acceptable.
   - `Organization`: The organization that created the dataset. 
   - `Website`: This can be a link to your dataset's repository or another website that you may maintain that provides additional context about your data.
@@ -128,7 +128,7 @@ Some datasets have year, month and day split out into separate columns. In this 
 
 The user can then select the relevant year, month and day columns as well as ensure they have correct date formatters.
 
-Below is a demonstration video on how to annoate a Build-a-Date:
+Below is a demonstration video on how to annotate a Build-a-Date:
 <div class="iframe-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aUymMlfSVeg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
@@ -141,7 +141,7 @@ However, latitude and longitude are not typically contained in the same column. 
 
 ![Coordinate pair](imgs/coordinate-pair.png)
 
-Below is a demonstration video on how to annoate a coordinate pair:
+Below is a demonstration video on how to annotate a coordinate pair:
 <div class="iframe-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ENUs0mxDy8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
